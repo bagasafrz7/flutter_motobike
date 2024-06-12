@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1004409392325",
+    "project_id": "motobike-2b7b0",
+    "storage_bucket": "motobike-2b7b0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1004409392325:android:15f44b3f497f55c65234ac",
+        "android_client_info": {
+          "package_name": "com.example.flutter_motobike"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMWkISLChWiEjtriaR0RKfrHCCTQ6N1v8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
