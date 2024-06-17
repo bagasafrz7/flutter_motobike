@@ -35,7 +35,7 @@ class AuthSource {
     }
   }
 
-  static Future<String> signIn(String name, String email, String password) async {
+  static Future<String> signIn(String email, String password) async {
     try {
       final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email,

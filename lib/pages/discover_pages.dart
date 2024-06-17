@@ -10,6 +10,6 @@ class DiscoverPages extends StatefulWidget {
 class _DiscoverPagesState extends State<DiscoverPages> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const Text("discver");
   }
 }

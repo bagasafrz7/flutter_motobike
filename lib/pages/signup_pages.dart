@@ -1,5 +1,7 @@
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_motobike/common/info.dart';
+import 'package:flutter_motobike/sources/auth_source.dart';
 import 'package:flutter_motobike/widgets/button_primary.dart';
 import 'package:flutter_motobike/widgets/button_secondary.dart';
 import 'package:flutter_motobike/widgets/input.dart';
@@ -16,6 +18,27 @@ class _SignUpPagesState extends State<SignUpPages> {
   final edtName = TextEditingController();
   final edtEmail = TextEditingController();
   final edtPassword = TextEditingController();
+
+  createNewAccount() {
+    if(edtName.text == '') return Info.error('Name is required');
+    if(edtEmail.text == '') return Info.error('Email is required');
+    if(edtPassword.text == '') return Info.error('Password is required');
+
+    Info.netral("Loading..");
+    AuthSource.signUp(
+      edtName.text,
+      edtEmail.text,
+      edtPassword.text
+    ).then((message) {
+      if(message!='success') return Info.error(message);
+
+      Info.success("Success Sign Up");
+      Future.delayed(const Duration(milliseconds: 1500), () {
+        Navigator.pushReplacementNamed(context, '/signin');
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -74,7 +97,7 @@ class _SignUpPagesState extends State<SignUpPages> {
           const Gap(12),
           Input(icon: 'assets/ic_key.png', hint: 'Write your password', editingController: edtPassword, obsecure: true),
           const Gap(30),
-          ButtonPrimary(text: 'Create New Account', onTap: () {}),
+          ButtonPrimary(text: 'Create New Account', onTap: createNewAccount),
           const Gap(30),
           const DottedLine(
             dashLength: 6,
@@ -82,7 +105,9 @@ class _SignUpPagesState extends State<SignUpPages> {
             dashColor: Color(0xffCECED5),
           ),
           const Gap(30),
-          ButtonSecondary(text: 'Sign In', onTap: () {}),
+          ButtonSecondary(text: 'Sign In', onTap: () {
+            Navigator.pushReplacementNamed(context, '/signin');
+          }),
           const Gap(30),
         ],
       ),
